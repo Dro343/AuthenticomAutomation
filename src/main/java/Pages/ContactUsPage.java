@@ -23,10 +23,12 @@ public class ContactUsPage extends BasePage {
     public ContactUsPage() {PageFactory.initElements(BasePage.driver, this);}
 
     public static boolean getInTouchTextDisplayValidation(){
+        CommonMethods.waitExplicitly(getInTouchText);
         boolean textDisplayed = getInTouchText.isDisplayed();
         return textDisplayed;
     }
     public static void submitApplication () {
+        CommonMethods.waitExplicitly(firstNameField);
         CommonMethods.enterText(firstNameField,"Andrei Automation Test");
         CommonMethods.enterText(lastNameField,"Hnedchyk Automation Test");
         CommonMethods.enterText(emailField,"andreihqa@gmail.com");
@@ -38,6 +40,7 @@ public class ContactUsPage extends BasePage {
         CommonMethods.clickElement(submitButton);
     }
     public static void verifyFinalMessage(){
+        CommonMethods.waitExplicitly(finalThankYouMessage);
         CommonMethods.compareElementText(finalThankYouMessage,"Thank you! Your request has been received!");
     }
 }
