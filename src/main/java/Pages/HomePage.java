@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage{
-   // @FindBy(className = "menu-icon")
-    //public static WebElement burgerMenu;
 
     public static WebElement burgerMenu = driver.findElement(By.className("menu-icon"));
     public static WebElement productsButton = driver.findElement(By.xpath("//a[text()='Products']"));

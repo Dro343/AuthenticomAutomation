@@ -27,7 +27,7 @@ public class ContactUsPage extends BasePage {
         boolean textDisplayed = getInTouchText.isDisplayed();
         return textDisplayed;
     }
-    public static void submitApplication () {
+    public static void submitApplication () throws InterruptedException {
         CommonMethods.waitExplicitly(firstNameField);
         CommonMethods.enterText(firstNameField,"Andrei Automation Test");
         CommonMethods.enterText(lastNameField,"Hnedchyk Automation Test");
@@ -39,6 +39,8 @@ public class ContactUsPage extends BasePage {
         CommonMethods.enterText(additionalCommentsField, "This is an automation testing test");
         CommonMethods.clickElement(submitButton);
     }
+
+
     public static void verifyFinalMessage(){
         CommonMethods.waitExplicitly(finalThankYouMessage);
         CommonMethods.compareElementText(finalThankYouMessage,"Thank you! Your request has been received!");

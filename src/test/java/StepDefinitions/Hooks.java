@@ -7,7 +7,7 @@ import io.cucumber.java.Before;
 
 public class Hooks extends BasePage {
     @Before
-    public void start() {
+    public void start() throws InterruptedException {
         browserLaunch();
     }
 

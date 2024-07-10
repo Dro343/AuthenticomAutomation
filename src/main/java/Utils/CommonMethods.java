@@ -1,7 +1,9 @@
 package Utils;
 
 import Pages.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -53,9 +55,24 @@ public class CommonMethods extends BasePage {
         executor.executeScript("arguments[0].click();", element);
     }
 
-
-
-
-
-
+    public static boolean staleElementClick (By locator)throws InterruptedException {
+        boolean result = false;
+        int attempts = 0;
+        while (attempts<5){
+            try {
+                JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+                jsExecutor. executeScript("arguments[0]. setAttribute('style', 'border:2px solid red; background:yellow')", driver.findElement(locator));
+                Thread.sleep(500);
+                driver.findElement(locator).click();
+                result=true;
+                break;
+            }
+            catch (StaleElementReferenceException e) {
+                System.out.println(e.getMessage());
+            }
+            attempts++;
+        }
+        Thread.sleep(1000);
+        return result;
+    }
 }
